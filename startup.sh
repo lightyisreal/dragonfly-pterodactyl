@@ -13,7 +13,10 @@ else
     cd ..
 fi
 
-go run ~/src/${MAIN_FILE}
+cd ~/src
+go build -o ../server ~/src/${MAIN_FILE} || exit 1
+cd ..
+~/server
 
 if [ -f "~/.netrc" ]; then
     rm ~/.netrc
