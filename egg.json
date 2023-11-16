@@ -1,0 +1,102 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-11-16T09:24:36-05:00",
+    "name": "Dragonfly",
+    "author": "imlighty@apexie.dev",
+    "description": "A Go egg optimized to run Dragonfly, a Minecraft Bedrock Edition server software written in Go. The installer will compile the cloned repository given by the GitHub URL variable",
+    "features": null,
+    "docker_images": {
+        "golang:bullseye": "golang:bullseye"
+    },
+    "file_denylist": [],
+    "startup": "wget -O - https:\/\/raw.githubusercontent.com\/imlighty\/dragonfly-pterodactyl\/main\/startup.sh | bash",
+    "config": {
+        "files": "{\r\n    \"config.json\": {\r\n        \"parser\": \"json\",\r\n        \"find\": {\r\n            \"Network.Address\": \":{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Server running on\"\r\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "golang:bullseye",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Go Private Packages",
+            "description": "Regulates what Go packages are supposed to be treated by the installer script as private (not needed if the repository is public)",
+            "env_variable": "GOPRIVATE",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:1000",
+            "field_type": "text"
+        },
+        {
+            "name": "Git Repository URL",
+            "description": "The repository to clone the server source code from",
+            "env_variable": "GIT_REPO",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:1000",
+            "field_type": "text"
+        },
+        {
+            "name": "Git Username",
+            "description": "The login username used to login to the Git server through HTTPS (not needed if the repository is public)",
+            "env_variable": "GIT_USERNAME",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:50",
+            "field_type": "text"
+        },
+        {
+            "name": "Git Password (or GitHub Personal Access Token)",
+            "description": "The password used to login to the Git server through HTTPS (not needed if the repository is public)",
+            "env_variable": "GIT_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100",
+            "field_type": "text"
+        },
+        {
+            "name": "Git Server",
+            "description": "The Git server to login with user credentials (not needed if the repository is public)",
+            "env_variable": "GIT_SERVER",
+            "default_value": "github.com",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100",
+            "field_type": "text"
+        },
+        {
+            "name": "Git Branch",
+            "description": "The branch to pull the server source code from",
+            "env_variable": "GIT_BRANCH",
+            "default_value": "main",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Main Go file",
+            "description": "The main Go file to use to run the server",
+            "env_variable": "MAIN_FILE",
+            "default_value": "cmd\/main.go",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:50",
+            "field_type": "text"
+        }
+    ]
+}
