@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Make sure Go is installed
+export PATH=$PATH:/usr/local/go/bin
+
 cd /home/container
 
 # Make internal Docker IP address available to processes.
