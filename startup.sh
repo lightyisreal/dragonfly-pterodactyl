@@ -1,5 +1,3 @@
-#!/bin/bash
-
 export GOPRIVATE=${GOPRIVATE}
 
 cd ~
