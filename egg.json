@@ -15,7 +15,7 @@
     "file_denylist": [],
     "startup": "wget -O - https:\/\/raw.githubusercontent.com\/imlighty\/dragonfly-pterodactyl\/main\/startup.sh | bash",
     "config": {
-        "files": "{\r\n    \"config.json\": {\r\n        \"parser\": \"json\",\r\n        \"find\": {\r\n            \"Network.Address\": \":{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{}",
         "startup": "{\r\n    \"done\": \"Server running on\"\r\n}",
         "logs": "{}",
         "stop": "stop"
