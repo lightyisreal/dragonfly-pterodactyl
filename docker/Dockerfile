@@ -5,7 +5,7 @@ LABEL       author="ImLighty" maintainer="imlighty@apexie.dev"
 LABEL       org.opencontainers.image.source="https://github.com/imlighty/dragonfly-pterodactyl"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apk add --update --no-cache ca-certificates tzdata bash \
+RUN         apk add --update --no-cache ca-certificates tzdata bash curl \
 				&& adduser -D -h /home/container container
 
 USER        container
