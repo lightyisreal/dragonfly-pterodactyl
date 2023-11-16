@@ -6,6 +6,8 @@ cd ~
 
 rm ~/.netrc ~/.wget-hsts
 
+mkdir test
+
 echo "machine ${GIT_SERVER} login ${GIT_USERNAME} password ${GIT_PASSWORD}" >> ~/.netrc
 
 if [ ! -d "~/src/" ]; then
