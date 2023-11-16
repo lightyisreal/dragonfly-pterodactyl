@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH golang:1.21-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH golang:alpine
 
 LABEL       author="ImLighty" maintainer="imlighty@apexie.dev"
 
