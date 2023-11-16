@@ -11,6 +11,9 @@ RUN         useradd -m -d /home/container -s /bin/bash container
 
 RUN         ln -s /home/container/ /nonexistent
 
+RUN         mkdir -p /go/pkg \
+            && chown -R container:container /go/pkg
+
 ENV         USER=container HOME=/home/container
 
 RUN         apt update \

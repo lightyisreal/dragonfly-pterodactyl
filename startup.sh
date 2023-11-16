@@ -2,8 +2,6 @@
 
 echo "machine ${GIT_SERVER} login ${GIT_USERNAME} password ${GIT_PASSWORD}" >> ~/.netrc
 
-GOMODCACHE=~/.cache/go-pkg
-
 if [ ! -d "src" ]; then
     git clone ${GIT_REPO} src
     cd src
