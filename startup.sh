@@ -4,8 +4,8 @@ echo "machine ${GIT_SERVER} login ${GIT_USERNAME} password ${GIT_PASSWORD}" >> ~
 
 if [ ! -d "src" ]; then
     git clone ${GIT_REPO} src
-    git config pull.rebase false
     cd src
+    git config pull.rebase false
     git checkout ${GIT_BRANCH} || exit 1
     cd ..
 else
