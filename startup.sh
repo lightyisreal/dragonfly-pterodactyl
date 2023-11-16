@@ -4,10 +4,6 @@ export GOPRIVATE=${GOPRIVATE}
 
 cd ~
 
-rm ~/.netrc ~/.wget-hsts
-
-mkdir test
-
 echo "machine ${GIT_SERVER} login ${GIT_USERNAME} password ${GIT_PASSWORD}" >> ~/.netrc
 
 if [ ! -d "~/src/" ]; then
@@ -23,4 +19,9 @@ fi
 
 go run ~/src/${MAIN_FILE}
 
-rm ~/.netrc ~/.wget-hsts
+if [ -f "~/.netrc" ]; then
+    rm ~/.netrc
+fi
+if [ -f "~/.wget-hsts" ]; then
+    rm ~/.wget-hsts
+fi
