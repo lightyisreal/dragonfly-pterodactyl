@@ -1,4 +1,4 @@
-cd ~
+#!/bin/bash
 
 echo "machine ${GIT_SERVER} login ${GIT_USERNAME} password ${GIT_PASSWORD}" >> ~/.netrc
 
