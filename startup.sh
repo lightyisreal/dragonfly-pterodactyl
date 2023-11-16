@@ -16,7 +16,6 @@ fi
 cd src
 go build -o ../server ${MAIN_FILE} || exit 1
 cd ..
-./server
 
 if [ -f "~/.netrc" ]; then
     rm ~/.netrc
