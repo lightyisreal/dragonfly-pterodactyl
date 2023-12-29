@@ -6,4 +6,4 @@ An egg used to run Dragonfly inside of Pterodactyl.
 
 ## Installation
 
-Just import the egg.json file into your Pterodactyl panel and you're good to go! The script and Docker image will be automatically updated on each server start.
+Just import the `egg.json` file into your Pterodactyl panel and you're good to go! The script and Docker image will be automatically updated on each server start.

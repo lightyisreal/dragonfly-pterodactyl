@@ -6,7 +6,7 @@
     },
     "exported_at": "2023-11-16T10:46:21-05:00",
     "name": "Dragonfly",
-    "author": "imlighty@apexie.dev",
+    "author": "45460688+imlighty@users.noreply.github.com",
     "description": "A Go egg optimized to run Dragonfly, a Minecraft Bedrock Edition server software written in Go. The installer will compile the cloned repository given by the GitHub URL variable",
     "features": null,
     "docker_images": {
@@ -23,7 +23,7 @@
     "scripts": {
         "installation": {
             "script": null,
-            "container": "golang:bullseye",
+            "container": "debian:bullseye",
             "entrypoint": "bash"
         }
     },
