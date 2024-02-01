@@ -1,8 +1,8 @@
 FROM        --platform=$TARGETOS/$TARGETARCH debian:bullseye-slim
 
-LABEL       author="ImLighty" maintainer="imlighty@apexie.dev"
+LABEL       author="plymc" maintainer="45460688+plymc@users.noreply.github.com"
 
-LABEL       org.opencontainers.image.source="https://github.com/imlighty/dragonfly-pterodactyl"
+LABEL       org.opencontainers.image.source="https://github.com/plymc/dragonfly-pterodactyl"
 LABEL       org.opencontainers.image.licenses=MIT
 
 ENV         DEBIAN_FRONTEND noninteractive
