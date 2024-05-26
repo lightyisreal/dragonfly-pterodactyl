@@ -13,7 +13,7 @@
         "ghcr.io\/plymc\/dragonfly-pterodactyl:main": "ghcr.io\/lightyisreal\/dragonfly-pterodactyl:main"
     },
     "file_denylist": [],
-    "startup": "curl -s https:\/\/raw.githubusercontent.com\/plymc\/dragonfly-pterodactyl\/main\/startup.sh | bash && .\/server",
+    "startup": "curl -s https:\/\/raw.githubusercontent.com\/lightyisreal\/dragonfly-pterodactyl\/main\/startup.sh | bash && .\/server",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Server running on\"\r\n}",
