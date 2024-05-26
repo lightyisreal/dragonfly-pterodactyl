@@ -6,11 +6,11 @@
     },
     "exported_at": "2023-11-16T10:46:21-05:00",
     "name": "Dragonfly",
-    "author": "45460688+plymc@users.noreply.github.com",
+    "author": "45460688+lightyisreal@users.noreply.github.com",
     "description": "A Go egg optimized to run Dragonfly, a Minecraft Bedrock Edition server software written in Go. The installer will compile the cloned repository given by the GitHub URL variable",
     "features": null,
     "docker_images": {
-        "ghcr.io\/plymc\/dragonfly-pterodactyl:main": "ghcr.io\/plymc\/dragonfly-pterodactyl:main"
+        "ghcr.io\/plymc\/dragonfly-pterodactyl:main": "ghcr.io\/lightyisreal\/dragonfly-pterodactyl:main"
     },
     "file_denylist": [],
     "startup": "curl -s https:\/\/raw.githubusercontent.com\/plymc\/dragonfly-pterodactyl\/main\/startup.sh | bash && .\/server",
