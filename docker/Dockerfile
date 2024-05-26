@@ -1,8 +1,8 @@
 FROM        --platform=$TARGETOS/$TARGETARCH debian:bullseye-slim
 
-LABEL       author="plymc" maintainer="45460688+plymc@users.noreply.github.com"
+LABEL       author="lightyisreal" maintainer="45460688+lightyisreal@users.noreply.github.com"
 
-LABEL       org.opencontainers.image.source="https://github.com/plymc/dragonfly-pterodactyl"
+LABEL       org.opencontainers.image.source="https://github.com/lightyisreal/dragonfly-pterodactyl"
 LABEL       org.opencontainers.image.licenses=MIT
 
 ENV         DEBIAN_FRONTEND noninteractive
@@ -20,9 +20,9 @@ RUN         apt install -y gcc g++ libgcc1 libc++-dev gdb libc6 git wget curl ta
             libfontconfig libicu67 icu-devtools libunwind8 libssl-dev sqlite3 libsqlite3-dev libmariadbclient-dev-compat libduktape205 locales ffmpeg gnupg2 apt-transport-https software-properties-common ca-certificates \
             liblua5.3-0 libz-dev rapidjson-dev tzdata libevent-dev libzip4 libprotobuf23 libfluidsynth2 procps libstdc++6 tini
 
-RUN         wget -q https://go.dev/dl/go1.22.0.linux-amd64.tar.gz \
-            && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz \
-            && rm -rf go1.22.0.linux-amd64.tar.gz \
+RUN         wget -q https://go.dev/dl/go1.22.3.linux-amd64.tar.gz \
+            && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.3.linux-amd64.tar.gz \
+            && rm -rf go1.22.3.linux-amd64.tar.gz \
             && echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile
 
 RUN         update-locale lang=en_US.UTF-8 \
