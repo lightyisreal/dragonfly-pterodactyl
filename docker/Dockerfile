@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH debian:bullseye-slim
+FROM        --platform=$TARGETOS/$TARGETARCH debian:trixie-slim
 
 LABEL       author="lightyisreal" maintainer="45460688+lightyisreal@users.noreply.github.com"
 
@@ -20,9 +20,9 @@ RUN         apt install -y gcc g++ libgcc1 libc++-dev gdb libc6 git wget curl ta
             libfontconfig libicu67 icu-devtools libunwind8 libssl-dev sqlite3 libsqlite3-dev libmariadbclient-dev-compat libduktape205 locales ffmpeg gnupg2 apt-transport-https software-properties-common ca-certificates \
             liblua5.3-0 libz-dev rapidjson-dev tzdata libevent-dev libzip4 libprotobuf23 libfluidsynth2 procps libstdc++6 tini
 # f
-RUN         wget -q https://go.dev/dl/go1.23.3.linux-amd64.tar.gz \
-            && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.23.3.linux-amd64.tar.gz \
-            && rm -rf go1.23.3.linux-amd64.tar.gz \
+RUN         wget -q https://go.dev/dl/go1.25.7.linux-amd64.tar.gz \
+            && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.25.7.linux-amd64.tar.gz \
+            && rm -rf go1.25.7.linux-amd64.tar.gz \
             && echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile
 
 RUN         update-locale lang=en_US.UTF-8 \
