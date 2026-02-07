@@ -1,39 +1,61 @@
 FROM        --platform=$TARGETOS/$TARGETARCH debian:trixie-slim
 
-LABEL       author="lightyisreal" maintainer="45460688+lightyisreal@users.noreply.github.com"
+LABEL       author="lightyisreal" \
+            maintainer="45460688+lightyisreal@users.noreply.github.com" \
+            org.opencontainers.image.source="https://github.com/lightyisreal/dragonfly-pterodactyl" \
+            org.opencontainers.image.licenses="MIT"
 
-LABEL       org.opencontainers.image.source="https://github.com/lightyisreal/dragonfly-pterodactyl"
-LABEL       org.opencontainers.image.licenses=MIT
+ENV         DEBIAN_FRONTEND=noninteractive
 
-ENV         DEBIAN_FRONTEND noninteractive
+RUN         useradd -m -d /home/container -s /bin/bash container \
+            && ln -s /home/container /nonexistent
 
-RUN         useradd -m -d /home/container -s /bin/bash container
-
-RUN         ln -s /home/container/ /nonexistent
-
-ENV         USER=container HOME=/home/container
+ENV         USER=container \
+            HOME=/home/container
 
 RUN         apt update \
-            && apt upgrade -y
+            && apt upgrade -y \
+            && apt install -y --no-install-recommends \
+                gcc g++ gdb \
+                libc6 libstdc++6 libgcc-s1 libatomic1 \
+                git wget curl tar zip unzip xz-utils \
+                binutils cabextract \
+                iproute2 net-tools procps \
+                netcat-openbsd telnet \
+                libsdl2-2.0-0 \
+                libfontconfig1 \
+                libicu-dev icu-devtools \
+                libunwind8 \
+                libssl-dev \
+                sqlite3 libsqlite3-dev \
+                locales tzdata ca-certificates \
+                ffmpeg gnupg2 \
+                software-properties-common \
+                liblua5.3-0 \
+                libz-dev libevent-dev \
+                rapidjson-dev \
+                libprotobuf-dev \
+                libfluidsynth2 \
+                tini \
+            && rm -rf /var/lib/apt/lists/*
 
-RUN         apt install -y gcc g++ libgcc1 libc++-dev gdb libc6 git wget curl tar zip unzip binutils xz-utils liblzo2-2 cabextract iproute2 net-tools netcat telnet libatomic1 libsdl1.2debian libsdl2-2.0-0 \
-            libfontconfig libicu67 icu-devtools libunwind8 libssl-dev sqlite3 libsqlite3-dev libmariadbclient-dev-compat libduktape205 locales ffmpeg gnupg2 apt-transport-https software-properties-common ca-certificates \
-            liblua5.3-0 libz-dev rapidjson-dev tzdata libevent-dev libzip4 libprotobuf23 libfluidsynth2 procps libstdc++6 tini
-# f
-RUN         wget -q https://go.dev/dl/go1.25.7.linux-amd64.tar.gz \
-            && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.25.7.linux-amd64.tar.gz \
-            && rm -rf go1.25.7.linux-amd64.tar.gz \
+ARG         TARGETARCH
+
+RUN         wget -q https://go.dev/dl/go1.25.7.linux-${TARGETARCH}.tar.gz \
+            && rm -rf /usr/local/go \
+            && tar -C /usr/local -xzf go1.25.7.linux-${TARGETARCH}.tar.gz \
+            && rm -f go1.25.7.linux-${TARGETARCH}.tar.gz \
             && echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile
 
-RUN         update-locale lang=en_US.UTF-8 \
+RUN         update-locale LANG=en_US.UTF-8 \
             && dpkg-reconfigure --frontend noninteractive locales
 
+WORKDIR     /home/container
 
-WORKDIR    /home/container
+STOPSIGNAL  SIGINT
 
-STOPSIGNAL SIGINT
-
-COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
+COPY        --chown=container:container entrypoint.sh /entrypoint.sh
 RUN         chmod +x /entrypoint.sh
+
 ENTRYPOINT  ["/usr/bin/tini", "-g", "--"]
 CMD         ["/entrypoint.sh"]
