@@ -23,7 +23,7 @@
     "scripts": {
         "installation": {
             "script": null,
-            "container": "debian:bullseye",
+            "container": "debian:trixie",
             "entrypoint": "bash"
         }
     },
